@@ -1,0 +1,9 @@
+**/.vs
+**/bin
+**/obj
+**/.csproj.user
+**/.git
+**/node_modules
+**/.vscode
+**/package-lock.json
+**/dist
