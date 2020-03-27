@@ -1,11 +1,13 @@
 **/.vs
 **/bin
 **/obj
-**/.csproj.user
 **/.git
 **/node_modules
 **/.vscode
-**/package-lock.json
+
 **/dist
 **/wwwroot
 **/out-tsc
+
+*.csproj.user
+package-lock.json
