@@ -14,4 +14,4 @@ Run <code>npm start</code> to run project.
 The project runs on http://localhost:4200
 
 # Authorization
-For Login use username <code>admin</code>
+For Login use <code>admin</code>
