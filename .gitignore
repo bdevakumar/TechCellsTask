@@ -9,5 +9,6 @@
 **/wwwroot
 **/out-tsc
 
+node_modules
 *.csproj.user
 package-lock.json

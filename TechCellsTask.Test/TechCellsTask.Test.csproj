@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TechCellsTask\TechCellsTask.csproj" />
+    <ProjectReference Include="..\TechCellsTask.Core\TechCellsTask.Core.csproj" />
+    <ProjectReference Include="..\TechCellsTask.Infrastructure\TechCellsTask.Infrastructure.csproj" />
+    <ProjectReference Include="..\TechCellsTask.Api\TechCellsTask.Api.csproj" />
   </ItemGroup>
 
 </Project>

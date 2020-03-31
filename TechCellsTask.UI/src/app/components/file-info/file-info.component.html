@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<div class="container">
+    <h3 class="my-5">Uploaded Files</h3>
+
+    <app-upload (onUpload)="loadFileInfos()"></app-upload>
+
+    <div *ngFor="let fileInfoGroup of fileInfoGroups">
+        <h5>File Type: {{fileInfoGroup.extension}}</h5>
+        <table class="table table-striped mb-4">
+            <thead>
+                <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">File Name</th>
+                    <th scope="col">Extension</th>
+                    <th scope="col">Size (bytes)</th>
+                    <th scope="col">Upload Date</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Download link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let file of fileInfoGroup.files; let i=index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>
+                        <div class="text-truncate" style="width: 150px;" title="{{file.fileName}}">
+                            {{file.fileName}}
+                        </div>
+                    </td>
+                    <td>{{file.fileExtension}}</td>
+                    <td>{{file.fileSize}}</td>
+                    <td>{{file.uploadDate | date: 'dd/MM/yyyy HH:mm'}}</td>
+                    <td>{{file.userName}}</td>
+                    <td>
+                        <a href="javascript:;" (click)="download(file.downloadLink, file.fileName)">download</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,20 +1,18 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using TechCellsTaskApi.Controllers;
-using TechCellsTaskApi.Core.Data;
-using TechCellsTaskApi.Core.Helpers;
-using TechCellsTaskApi.Core.Repositories;
-using TechCellsTaskApi.Core.Services;
-using TechCellsTaskApi.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Primitives;
+using TechCellsTask.Api.Controllers;
+using TechCellsTask.Core.Dto;
+using TechCellsTask.Core.Helpers;
+using TechCellsTask.Core.Services;
+using TechCellsTask.Infrastructure.Data;
+using TechCellsTask.Infrastructure.Data.Repositories;
 using Xunit;
 
 namespace TechCellsTask.Test
@@ -49,7 +47,7 @@ namespace TechCellsTask.Test
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
-            var model = Assert.IsAssignableFrom<IEnumerable<FileInfoGroupModel>>(okResult.Value);
+            var model = Assert.IsAssignableFrom<IEnumerable<FileInfoGroup>>(okResult.Value);
             Assert.NotNull(model);
         }
 
@@ -75,8 +73,7 @@ namespace TechCellsTask.Test
             var controller = CreateControllerInstance();
             var httpContext = new DefaultHttpContext();
             httpContext.Request.Form = new FormCollection(new Dictionary<string, StringValues>(), new FormFileCollection { });
-            var cctx = new ControllerContext();
-            cctx.HttpContext = httpContext;
+            var cctx = new ControllerContext { HttpContext = httpContext };
             controller.ControllerContext = cctx;
 
             // Act
@@ -145,9 +142,7 @@ namespace TechCellsTask.Test
             httpContext.Request.Form = new FormCollection(new Dictionary<string, StringValues>(), new FormFileCollection { file });
             var cctx = new ControllerContext();
             cctx.HttpContext = httpContext;
-            return cctx;
-            //var actx = new ActionContext(httpContext, new RouteData(,), new ControllerActionDescriptor());
-            //return new ControllerContext(actx);
+            return cctx;;
         }
 
         private AppSettingOption GetOptions()
