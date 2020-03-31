@@ -2,7 +2,7 @@
 Test project built on Asp.Net Core 3.1 and Angular 8 using clean architecture.
 
 # Database
-- Uses Sql Server Express LocalDB
+Uses Sql Server Express LocalDB
 
 # Visual Studio
 Open the solution file <code>TechCellsTask.sln</code> and build/run. The project runs on http://localhost:5008
